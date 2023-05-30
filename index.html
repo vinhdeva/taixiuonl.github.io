@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tài xỉu online </title>
+    <style>
+        body {
+            background-color: pink;
+        }
 
+        .dice-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+    </style>
+    <script>
+        function rollDice() {
+            var dice1 = Math.floor(Math.random() * 6) + 1;
+            var dice2 = Math.floor(Math.random() * 6) + 1;
+            var dice3 = Math.floor(Math.random() * 6) + 1;
+
+            var diceImages = {
+                1: "1.1.png",
+                2: "2.1.png",
+                3: "3.1.png",
+                4: "4.1.png",
+                5: "5.1.png",
+                6: "6.1.png"
+            };
+
+            var dice1Image = "<img src='" + diceImages[dice1] + "' class='dice-img'>";
+            var dice2Image = "<img src='" + diceImages[dice2] + "' class='dice-img'>";
+            var dice3Image = "<img src='" + diceImages[dice3] + "' class='dice-img'>";
+
+            var total = dice1 + dice2 + dice3;
+
+            var result = total <= 10 ? "Xỉu" : "Tài";
+
+            document.getElementById("dice1").innerHTML = dice1Image;
+            document.getElementById("dice2").innerHTML = dice2Image;
+            document.getElementById("dice3").innerHTML = dice3Image;
+            document.getElementById("result").innerHTML = "Kết quả: " + result;
+
+            var container = document.querySelector(".container");
+            container.classList.add("shake");
+            setTimeout(function() {
+                container.classList.remove("shake");
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tài xỉu online made by Vinhdeva</h1>
+        <button onclick="rollDice()">Lắc</button>
+        <div id="dice1"></div>
+        <div id="dice2"></div>
+        <div id="dice3"></div>
+        <br>
+        <img src="thantai.jpg" alt=""width="120px" height="100px">
+        <h2>
+        <p id="result"></p>
+    </h2>
+</div>
+</body>
+</html>
